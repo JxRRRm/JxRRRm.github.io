@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fancify Shamcify</title>
+		<style>
+			.fieldset-box {
+				border: 1px solid #ccc;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
+		</style>
+
+    <!-- Link your HTML page to your JavaScript file using a script tag. -->
+		<script src="fancifymytext.js"></script>
+    
+	</head>
+
+	<body onload="clear()">
+		<h1>Fancify my Text</h1>
+
+		<!-- 
+      A field for users to enter large (multi-line) amounts of text.
+      It should be 4 rows by 30 columns in size.
+      Wrap it in a bordered field set box with the label "Text".
+    -->
+		<fieldset class="fieldset-box"> 
+			<legend>Text</legend>         
+			<textarea id="textArea" rows="4" cols="30"></textarea>  
+		</fieldset>
+
+		<!-- 
+      Add a second bordered field set box labeled "Fancify" that contains the following controls:
+        A button labeled: Bigger!
+        Two radio buttons labeled "FancyShmancy" and "BoringBetty"
+     -->
+		<fieldset class="fieldset-box"> 
+			<legend>Fancify</legend>      
+
+			<button onclick="makeTextBigger()">Bigger!</button><br>  
+
+			<input type="radio" id="fancy" name="fanciness" value="fancy" onchange="applyFancyStyles()">
+			<label for="fancy">FancyShmancy</label><br>
+
+			<input type="radio" id="boring" name="fanciness" value="boring" onchange="applyFancyStyles()">
+			<label for="boring">BoringBetty</label><br>
+		</fieldset>
+
+		<!-- Button to transform text -->
+		<button onclick="transformText()">Moo</button>
+	</body>
+</html>
