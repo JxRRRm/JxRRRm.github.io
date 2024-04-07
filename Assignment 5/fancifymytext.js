@@ -9,15 +9,16 @@ function makeTextBigger() {
 function applyFancyStyles() {
   var textArea = document.getElementById("textArea");
   // selecting the "FancyShmancy" radio button, should make the text bold, underline, and blue.
-  if (document.getElementById("fancy").checked) {
+  if (document.getElementById("fancy").checked) 
       textArea.style.fontWeight = "bold";
       textArea.style.color = "blue";
       textArea.style.textDecoration = "underline";
-  } else {
+}
+
+function removeFancyStyles() {
       textArea.style.fontWeight = "normal"; // Reset font weight to normal
       textArea.style.color = "black"; // Reset color to default
       textArea.style.textDecoration = "none"; // Reset text decoration to default
-  }
 }
 
 function transformText() {
