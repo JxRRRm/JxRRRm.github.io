@@ -1,83 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
-	<head>
-		<meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8" />
     <title>One Piece Anime</title>
     <style>
       body {
           font-family: Arial, sans-serif;
           padding: 20px;
       }
+      /* Light Theme Styles */
+      body.light {
+          background-color: #ffffff; /* Light background color */
+          color: #000000; /* Light text color */
+      }
+      /* Dark Theme Styles */
+      body.dark {
+          background-color: black; /* Dark background color */
+          color: #ffffff; /* Dark text color */
+      }
       .container {
-          max-width: 600px;
           margin: 0 auto;
       }
       .theme-toggle {
           display: inline-block;
-          padding: 10px 20px;
-          background-color: #007bff;
+          padding: 3px 5px;
+          background-color: #555;
           color: #fff;
           text-decoration: none;
           border-radius: 5px;
           cursor: pointer;
       }
-  </style>
-	</head>
+    </style>
+</head>
 
-	<body>
+<body>
     <h1>One Piece (Anime)</h1>
     <div id="navigation">
-      <a href="index.html">Home</a>
-      <a href="index.html">Characters</a>
-      <a href="index.html">Arcs</a>
-      <a href="index.html">Wiki</a>
-      <a href="index.html">Store</a>
+        <a href="index.html">Home</a>
+        <a href="characters.html">Characters</a>
+        <a href="arcs.html">Arcs</a>
+        <a href="wiki.html">Wiki</a>
+        <a href="store.html">Store</a>
     </div>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-		<h2>Summary</h2>
-		<p>
-			<a href=https://en.wikipedia.org/wiki/One_Piece title=One Piece Wiki>One Piece</a>
-			is an anime that is still current with over <strong>1000 episodes</strong>. In the story, the main character, 
-      <strong>Monkey D. Luffy</strong> <br />
-      has a mission to be the king of the pirates. But in order to accomplish this goal, Luffy first find members to
-      join his crew.<br />
-      As the story progresses, Luffy successfully recruits several key members for his pirate crew, including a navigator, a cook,<br />
-      as well as a doctor. Together Luffy and his crew are the <strong>Straw Hat Pirates</strong> and their main goal is to help Luffy find the <br />
-      One Piece and become the king of the pirates.
-    </p>
+    <div class="container">
+        <h2>Summary</h2>
+        <p>
+            <a href="https://en.wikipedia.org/wiki/One_Piece" title="One Piece Wiki">One Piece</a>
+            is an anime that is still current with over <strong>1000 episodes</strong>. In the story, the main character,
+            <strong>Monkey D. Luffy</strong> <br />
+            has a mission to be the king of the pirates. But in order to accomplish this goal, Luffy first finds members to
+            join his crew.<br />
+            As the story progresses, Luffy successfully recruits several key members for his pirate crew, including a navigator, a cook,<br />
+            as well as a doctor. Together Luffy and his crew are the <strong>Straw Hat Pirates</strong> and their main goal is to help Luffy find the <br />
+            One Piece and become the king of the pirates.
+        </p>
+        <img src="https://www.denofgeek.com/wp-content/uploads/2020/07/One-Piece-Full-Cast-Header-Image.jpg?resize=768%2C432"
+            alt="One Piece image" />
+        <div>
+            <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+        </div>
+    </div>
 
-		<img
-		  src="https://www.denofgeek.com/wp-content/uploads/2020/07/One-Piece-Full-Cast-Header-Image.jpg?resize=768%2C432"
-		  alt="One Piece image" 
-		/>
     <script>
-      // Function to toggle between light and dark themes
-      function toggleTheme() {
-          const body = document.body;
-          const currentTheme = localStorage.getItem('theme');
+      // Apply the theme preference from local storage to the body
+      function applyThemePreference() {
+        let currentTheme = localStorage.getItem('theme');
 
-          // If no theme is set or the current theme is light, switch to dark
-          if (!currentTheme || currentTheme === 'light') {
-              body.classList.remove('dark');
-              body.classList.add('light');
-              localStorage.setItem('theme', 'dark');
-          } else { // Otherwise, switch to light
-              body.classList.remove('light');
-              body.classList.add('dark');
-              localStorage.setItem('theme', 'light');
-          }
+        // If no theme preference is set, initialize with a default theme (e.g., 'light')
+        if (!currentTheme) {
+            currentTheme = 'light'; // Set default theme to 'light'
+            localStorage.setItem('theme', 'light'); // Save default theme preference to local storage
+        }
+
+        // Apply the theme preference to the body
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark'); // Apply dark theme class
+        } else {
+            document.body.classList.add('light'); // Apply light theme class
+        }
       }
 
-      // Check if there's a theme preference in local storage and apply it
-      document.addEventListener('DOMContentLoaded', function() {
-          const currentTheme = localStorage.getItem('theme');
-          if (currentTheme === 'dark') {
-              document.body.classList.add('dark');
-          } else {
-              document.body.classList.add('light');
-          }
-      });
-  </script>
-	</body>
-</html>
+    // Apply the theme preference when the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', applyThemePreference);
 
+      // Function to toggle between light and dark themes
+      function toggleTheme() {
+        console.log('Toggle Theme button clicked'); // Check if the function is being called
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+
+        // If no theme is set or the current theme is light, switch to dark
+        if (currentTheme === 'light') {
+            body.classList.add('dark');
+            body.classList.remove('light');
+            localStorage.setItem('theme', 'dark');
+        } else { // Otherwise, switch to light
+            body.classList.add('light');
+            body.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+        document.addEventListener('DOMContentLoaded', applyThemePreference);
+      }
+    </script>
+</body>
+</html>
