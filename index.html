@@ -1,8 +1,27 @@
 <!doctype html>
 <html lang="en-US">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
     <title>One Piece Anime</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          padding: 20px;
+      }
+      .container {
+          max-width: 600px;
+          margin: 0 auto;
+      }
+      .theme-toggle {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+  </style>
 	</head>
 
 	<body>
@@ -14,6 +33,7 @@
       <a href="index.html">Wiki</a>
       <a href="index.html">Store</a>
     </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 		<h2>Summary</h2>
 		<p>
 			<a href=https://en.wikipedia.org/wiki/One_Piece title=One Piece Wiki>One Piece</a>
@@ -30,6 +50,34 @@
 		  src="https://www.denofgeek.com/wp-content/uploads/2020/07/One-Piece-Full-Cast-Header-Image.jpg?resize=768%2C432"
 		  alt="One Piece image" 
 		/>
+    <script>
+      // Function to toggle between light and dark themes
+      function toggleTheme() {
+          const body = document.body;
+          const currentTheme = localStorage.getItem('theme');
+
+          // If no theme is set or the current theme is light, switch to dark
+          if (!currentTheme || currentTheme === 'light') {
+              body.classList.remove('dark');
+              body.classList.add('light');
+              localStorage.setItem('theme', 'dark');
+          } else { // Otherwise, switch to light
+              body.classList.remove('light');
+              body.classList.add('dark');
+              localStorage.setItem('theme', 'light');
+          }
+      }
+
+      // Check if there's a theme preference in local storage and apply it
+      document.addEventListener('DOMContentLoaded', function() {
+          const currentTheme = localStorage.getItem('theme');
+          if (currentTheme === 'dark') {
+              document.body.classList.add('dark');
+          } else {
+              document.body.classList.add('light');
+          }
+      });
+  </script>
 	</body>
 </html>
 
